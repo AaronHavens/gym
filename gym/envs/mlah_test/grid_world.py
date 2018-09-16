@@ -70,7 +70,7 @@ class GridWorld(gym.Env):
         max_r = 1
         normalizer = np.sqrt(2*self.dim**2)
         inner = (self.goal[0]-state[0])**2 + (self.goal[1]-state[1])**2
-        return 1/(max_r*np.sqrt(inner)/normalizer)
+        return -(max_r*np.sqrt(inner)/normalizer)
 
     def grid_select(self):
         row = np.random.randint(0,self.dim)
