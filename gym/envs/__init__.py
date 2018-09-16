@@ -294,6 +294,11 @@ register(
 # Robotics
 # ----------------------------------------
 
+register(
+    id='GridWorld-v0',
+    entry_point='gym.envs.mlah_test:GridWorld'
+)
+
 def _merge(a, b):
     a.update(b)
     return a
@@ -420,6 +425,7 @@ for reward_type in ['sparse', 'dense']:
         kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
         max_episode_steps=100,
     )
+
 
 # Atari
 # ----------------------------------------
