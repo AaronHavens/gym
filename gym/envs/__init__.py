@@ -291,12 +291,17 @@ register(
     max_episode_steps=1000,
 )
 
-# Robotics
+# aaron custom
 # ----------------------------------------
 
 register(
     id='GridWorld-v0',
-    entry_point='gym.envs.mlah_test:GridWorld'
+    entry_point='gym.envs.aaron_custom:GridWorld'
+)
+
+register(
+    id='KinematicCar-v0',
+    entry_point='gym.envs.aaron_custom:KinematicCar'
 )
 
 def _merge(a, b):

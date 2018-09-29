@@ -13,7 +13,7 @@ STEP_REWARD = -1.0
 
 class GridWorld(gym.Env):
 
-    def __init__(self,n_dims=10,goal=[0,0],seed=None):
+    def __init__(self,n_dims=11,goal=[5,5],seed=None):
         if seed is not None:
             np.random.seed(seed)
         self.dim = n_dims
@@ -52,7 +52,7 @@ class GridWorld(gym.Env):
             reward = GOAL_REWARD
             self.done = True
         else:
-            reward = self.l2_dist(state_)
+            reward = STEP_REWARD + 10*(-self.l2_dist(state_)+self.l2_dist(self.state))
         self.state = state_
         return np.array(self.state,dtype=np.float64), reward, self.done, {}
 
@@ -67,10 +67,8 @@ class GridWorld(gym.Env):
         return self.state
 
     def l2_dist(self,state):
-        max_r = 1
-        normalizer = np.sqrt(2*self.dim**2)
         inner = (self.goal[0]-state[0])**2 + (self.goal[1]-state[1])**2
-        return -(max_r*np.sqrt(inner)/normalizer)
+        return np.sqrt(inner)
 
     def grid_select(self):
         row = np.random.randint(0,self.dim)
