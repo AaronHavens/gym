@@ -47,7 +47,7 @@ class GridWorld(gym.Env):
 
         state_ = np.array([row,col],dtype=int)
 
-    
+
         if np.array_equal(state_,self.goal):
             reward = GOAL_REWARD
             self.done = True
